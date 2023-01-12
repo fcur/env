@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  mongo-db:
+    container_name: mongo-local-db
+    image: mongo:5.0
+    restart: always
+    ports:
+      - "27017:27017"
+    command: mongod
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'LocalUser'
+      MONGO_INITDB_ROOT_PASSWORD: 'Pass@word'
+    volumes:
+      - ./mongo_container_db:/data/db
+    healthcheck:
+      test: echo 'db.stats().ok' | mongo localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
