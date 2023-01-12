@@ -1,20 +1,32 @@
 # Environment
-Local environment templates
+Local environment templates.
 
-## Microsoft SQL Server
+## Create and start containers
+
+```
+ docker compose -f ./docker-compose-mssql.yml up
+```
+
+## Available templates
+
+### SQL db
+
+#### Microsoft SQL Server
 
 - **Username**: 'sa'
 - **Password**: 'Pass@word'
 - **Port**: '1433'
 
 
-## PostgreSQL
+#### PostgreSQL
 
 - **Username**: 'postgres'
 - **Password**: 'Pass@word'
 - **Port**: '5432'
 
-## MongoDB
+### NoSql db
+
+#### MongoDB
 
 - **Username**: 'LocalUser'
 - **Password**: 'Pass@word'
