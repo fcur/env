@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    container_name: postgres-local-db
+    image: postgres:15.1-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    command: postgres -c 'max_connections=500'
+    environment:
+      POSTGRES_PASSWORD: 'Pass@word'
+    volumes:
+      - ./postgres_container_db:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "root" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
