@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  mssql:
+    container_name: mssql-local-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    restart: always
+    ports:
+      - "1433:1433"
+    environment:
+      MSSQL_PID: "Express"
+      SA_PASSWORD: "Pass@word"
+      ACCEPT_EULA: "Y"
+    volumes:
+      - ./mssql_container_db:/var/opt/mssql
+    healthcheck:
+      test: [ "CMD", "/opt/mssql-tools/bin/sqlcmd","-S", "localhost", "-U", "sa", "-P","Pass@word", "-Q", "select 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
