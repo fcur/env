@@ -31,3 +31,10 @@ Local environment templates.
 - **Username**: 'LocalUser'
 - **Password**: 'Pass@word'
 - **Port**: '27017'
+
+### Message broker
+
+#### Apache Kafka
+- **ZookeperHost**: 'localhost'
+- **ZookeperPort**: '2181'
+- **BrokerEndpoints**: '0.0.0.0:9092'
