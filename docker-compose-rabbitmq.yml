@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.11.8-management-alpine
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ./rabbitmq_container/data:/var/lib/rabbitmq/
+      - ./rabbitmq_container/log:/var/log/rabbitmq/
+
+
+# sudo chown -R 100099:root log/
+# user guest
+# http://localhost:15672/
